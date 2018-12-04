@@ -36,7 +36,7 @@ export default {
             logoPath: '',
             tabs: [{
                 nameText: '文档',
-                path: ''
+                path: '/document'
             }, {
                 nameText: '示例',
                 path: ''
@@ -60,28 +60,28 @@ export default {
     .dc_header-logo {
         padding: 0 16px;
         height: 100%;
-        .dc_logo-link {
-            display: block;
-            height: 100%;
-            margin: 0 80px;
-        }
-        .dc_link-img {
-            display: block;
-            height: 100%;
-            transform: scale(.5);
-        }
+    }
+    .dc_logo-link {
+        display: block;
+        height: 100%;
+        margin: 0 80px;
+    }
+    .dc_link-img {
+        display: block;
+        height: 100%;
+        transform: scale(.5);
     }
     .dc_header-tabs {
         padding: 0 30px;
         box-shadow: none;
-        .dc_tabs-tab {
-            display: inline-block;
-            margin: 0 18px;
-            color: $color4B4;
-            transition: color .2s;
-            &.dc_tabs_active {
-                color: $colorFC9;
-            }
+    }
+    .dc_tabs-tab {
+        display: inline-block;
+        margin: 0 18px;
+        color: $color4B4;
+        transition: color .2s;
+        &.dc_tabs_active {
+            color: $colorFC9;
         }
     }
     .dc_header-toggleNav {
