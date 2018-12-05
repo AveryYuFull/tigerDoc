@@ -32,6 +32,7 @@ export default {
 
 .dcs_app {
     .dc_app-layout {
+        max-width: unset;
         .acs_layout-header-wrap {
             height: 70px;
             line-height: 70px;
@@ -39,6 +40,9 @@ export default {
             margin-top: 0;
             background-color: $colorf;
             box-shadow: 0 1px 2px rgba(0,0,0,.15);
+        }
+        .acs_layout-content-wrap {
+            padding-top: 72px;
         }
     }
 

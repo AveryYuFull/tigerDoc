@@ -4,6 +4,7 @@
             :placeholder="placeholder">
         </dc-search-box>
         <dc-slide-nav
+            class="dc_slideNavBox-nav"
             :page-modules="pageModules">
         </dc-slide-nav>
     </div>
@@ -29,3 +30,15 @@ export default {
     }
 };
 </script>
+
+<style lang="scss">
+@import "style/_public/_var.scss";
+@import "style/_public/_mixin.scss";
+@import "style/_public/_iconFont.scss";
+
+.dcs_slideNavBox {
+    .dc_slideNavBox-nav {
+
+    }
+}
+</style>
