@@ -9,7 +9,7 @@
 
 <script>
 import TplExtend from '../tplExtend/TplExtend.vue';
-import 'markdown-css-themes/markdown7.css'
+import 'markdown-css-themes/markdown7.css';
 import hljs from 'highlight.js';
 import marked from 'markdown-it';
 
@@ -26,7 +26,7 @@ const md = marked({
         }
 
         return ''; // use external default escaping
-    },
+    }
 });
 export default {
     extends: TplExtend,
@@ -40,7 +40,7 @@ export default {
             return res;
         }
     }
-}
+};
 </script>
 
 <style>

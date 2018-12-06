@@ -21,12 +21,14 @@
                 <div>
                     <ul>
                         <li :key="subIndex"
-                            v-for="(subItem, subIndex) in (item.pages || [])"
+                            v-for="(subItem, subIndex) in (item.pathPages || [])"
                             v-if="subItem">
-                            <router-link :to="subItem">
-                                <div class="dc_subItem-name" v-text="subItem">
+                            <router-link class="dc_subItem-name" active-class="dc-subItem-active" :to="subItem.path" v-text="subItem.name">
+                                <!-- <div class="dc_subItem-name"
+                                    :class="{'dc-subItem-active': myActiveIndex === `${sortIndex}${index}${subIndex}`}"
+                                    v-text="subItem">
                                     <router-link :to="subItem"></router-link>
-                                </div>
+                                </div> -->
                             </router-link>
                         </li>
                     </ul>
@@ -39,7 +41,7 @@
 </template>
 
 <script>
-import velocity from 'velocity-animate';
+// import velocity from 'velocity-animate';
 
 export default {
     name: 'dc-tree-menu',
@@ -51,7 +53,7 @@ export default {
     data () {
         const _that = this;
         return {
-            visibles: (new Array(_that.itemData && _that.itemData.length)).fill(false)
+            visibles: (new Array(_that.itemData && _that.itemData.length)).fill(true)
         };
     },
     methods: {
@@ -120,6 +122,13 @@ export default {
         // &.dc_item-subItem-leave {
         //     height: 0;
         // }
+    }
+    .dc_subItem-name {
+        display: block;
+        padding: 5px 10px 5px 0;
+        &.dc-subItem-active {
+            background: $colorECE;
+        }
     }
 }
 </style>

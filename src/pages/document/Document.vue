@@ -52,7 +52,7 @@ export default {
         outline: none;
         width: 264px;
         padding: 10px 0 10px 10px;
-        background: rgb(222, 215, 215);
+        background: $colorFFF;
     }
     .dc_layout-doc {
         overflow: auto;

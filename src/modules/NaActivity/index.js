@@ -27,6 +27,29 @@ const pageModules = [{
             children: []
         }
     ]
+}, {
+    name: 'na-activity1',
+    pages: '',
+    children: [
+        {
+            name: 'Widget1',
+            pages: WidgetPages,
+            children: [{
+                name: 'Common1',
+                pages: CommonPages
+            }]
+        },
+        {
+            name: 'Common1',
+            pages: CommonPages,
+            children: []
+        },
+        {
+            name: 'Business1',
+            pages: BusinessPages,
+            children: []
+        }
+    ]
 }];
 
 const componentMap = Object.assign(

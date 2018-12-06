@@ -27,9 +27,6 @@ export default {
         pageModules: {
             type: Array
         }
-    },
-    mounted () {
-        console.log('pageModules-->', this.pageModules);
     }
 };
 </script>

@@ -6,9 +6,10 @@ const routerMap = [];
 
 if (_compMap) {
     Object.keys(_compMap).forEach(key => {
+        const _item = _compMap[key];
         routerMap.push({
-            path: key,
-            component: _compMap[key]
+            path: _item.path,
+            component: _item.component
         });
     });
 }
