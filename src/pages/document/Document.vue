@@ -4,17 +4,25 @@
             class="dc_document-slideNav"
             :page-modules="pageModules">
         </dc-slide-nav-box>
+        <div class="dc_layout-doc">
+            <router-view></router-view>
+        </div>
+        <div class="dc_layout-preview">
+            <dc-preview></dc-preview>
+        </div>
     </div>
 </template>
 
 <script>
 import DcSlideNavBox from '@/components/slideNavBox/SlideNavBox';
 import pageModules from '@/modules';
+import DcPreview from '../../components/preview/Preview';
 
 export default {
     name: 'dc-document',
     components: {
-        DcSlideNavBox
+        DcSlideNavBox,
+        DcPreview
     },
     data () {
         return {
@@ -45,6 +53,10 @@ export default {
         width: 264px;
         padding: 10px 0 10px 10px;
         background: rgb(222, 215, 215);
+    }
+    .dc_layout-doc {
+        overflow: auto;
+        flex: 1;
     }
 }
 </style>

@@ -3,6 +3,8 @@ import Router from 'vue-router';
 import DcHome from '@/pages/home/home';
 import DcDocument from '@/pages/document/Document';
 
+import routerMap from './routes';
+
 Vue.use(Router);
 
 export default new Router({
@@ -12,7 +14,8 @@ export default new Router({
             component: DcHome,
             children: [{
                 path: '/',
-                component: DcDocument
+                component: DcDocument,
+                children: routerMap
             }]
         }
     ]

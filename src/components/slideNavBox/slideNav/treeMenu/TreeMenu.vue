@@ -23,7 +23,11 @@
                         <li :key="subIndex"
                             v-for="(subItem, subIndex) in (item.pages || [])"
                             v-if="subItem">
-                            <div class="dc_subItem-name" v-text="subItem"></div>
+                            <router-link :to="subItem">
+                                <div class="dc_subItem-name" v-text="subItem">
+                                    <router-link :to="subItem"></router-link>
+                                </div>
+                            </router-link>
                         </li>
                     </ul>
                     <dc-tree-menu :item-data="item.children"></dc-tree-menu>
