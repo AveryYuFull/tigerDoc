@@ -23,12 +23,10 @@
                         <li :key="subIndex"
                             v-for="(subItem, subIndex) in (item.pathPages || [])"
                             v-if="subItem">
-                            <router-link class="dc_subItem-name" active-class="dc-subItem-active" :to="subItem.path" v-text="subItem.name">
-                                <!-- <div class="dc_subItem-name"
-                                    :class="{'dc-subItem-active': myActiveIndex === `${sortIndex}${index}${subIndex}`}"
-                                    v-text="subItem">
-                                    <router-link :to="subItem"></router-link>
-                                </div> -->
+                            <router-link class="dc_subItem-name"
+                                active-class="dc-subItem-active"
+                                :to="subItem.path"
+                                v-text="subItem.name">
                             </router-link>
                         </li>
                     </ul>
