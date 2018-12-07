@@ -49,10 +49,9 @@ export default {
     user-select: text;
     flex-direction: row;
     .dc_document-slideNav {
-        overflow: auto;
+        // overflow: auto;
         position: relative;
         outline: none;
-        width: 264px;
         padding: 10px 0 10px 10px;
         background: $colorFBF;
     }

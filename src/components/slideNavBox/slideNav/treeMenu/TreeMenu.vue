@@ -104,17 +104,17 @@ export default {
         position: relative;
         &.dc_title_active {
             color: $colorFC9;
-            &:after {
+            &::after {
                 border-top-color: $colorFC9;
             }
         }
         &.dc_title_rotate {
-            &:after {
+            &::after {
                 transform: rotate(180deg);
                 top: 32%;
             }
         }
-        &:after {
+        &::after {
             content: '';
             width: 0;
             height: 0;
@@ -158,7 +158,7 @@ export default {
             background: rgba(252,145,83,.2);
             position: relative;
             color: $colorFC9;
-            &:after {
+            &::after {
                 content: '';
                 width: 3px;
                 height: 100%;
