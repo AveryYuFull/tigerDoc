@@ -6,6 +6,7 @@
             v-for="(item, index) in itemData"
             v-if="item">
             <div class="dc_item-name"
+                :class="{'dc_title_active': item.isRootActive}"
                 @click="toggleNav($event, index)"
                 v-text="item.name"
                 v-if="item.name">
@@ -97,6 +98,9 @@ export default {
         font-size: 16px;
         font-weight: 400;
         color: $color2f;
+        &.dc_title_active {
+            color: red;
+        }
     }
     .dc_item-subItem {
         overflow: hidden;

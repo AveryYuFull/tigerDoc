@@ -5,7 +5,9 @@
             :key="index"
             v-for="(item, index) in pageModules">
             <div class="dc_navItem-title">
-                <div class="dc_title-text" v-text="item.name" v-if="item.name"></div>
+                <div class="dc_title-text"
+                    :class="{'dc_title_active': item.isRootActive}"
+                    v-text="item.name" v-if="item.name"></div>
                 <div class="dc_title-toggleV">版本切换</div>
             </div>
             <dc-tree-menu
@@ -55,6 +57,9 @@ export default {
     }
     .dc_title-text {
         display: inline-block;
+        &.dc_title_active {
+            color :red;
+        }
     }
     .dc_title-toggleV {
         display: inline-block;
