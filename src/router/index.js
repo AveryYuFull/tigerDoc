@@ -14,6 +14,7 @@ export default new Router({
             component: DcHome,
             children: [{
                 path: '/',
+                redirect: routerMap[0].path,
                 component: DcDocument,
                 children: routerMap
             }]

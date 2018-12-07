@@ -2,7 +2,8 @@
     <div class="dcs_document">
         <dc-slide-nav-box
             class="dc_document-slideNav"
-            :page-modules="pageModules">
+            :page-modules="pageModules"
+            :component-map="componentMap">
         </dc-slide-nav-box>
         <div class="dc_layout-doc">
             <router-view></router-view>
@@ -26,7 +27,8 @@ export default {
     },
     data () {
         return {
-            pageModules: pageModules.pageModules
+            pageModules: pageModules.pageModules,
+            componentMap: pageModules.componentMap
         };
     }
 };
@@ -52,7 +54,7 @@ export default {
         outline: none;
         width: 264px;
         padding: 10px 0 10px 10px;
-        background: $colorFFF;
+        background: $colorFBF;
     }
     .dc_layout-doc {
         overflow: auto;

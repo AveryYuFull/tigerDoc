@@ -57,8 +57,10 @@ export default {
     }
     .dc_title-text {
         display: inline-block;
+        font-size: $largeFontSize;
+        font-weight: 400;
         &.dc_title_active {
-            color :red;
+            color :$colorFC9;
         }
     }
     .dc_title-toggleV {

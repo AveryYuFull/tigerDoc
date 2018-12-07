@@ -6,7 +6,7 @@
             v-for="(item, index) in itemData"
             v-if="item">
             <div class="dc_item-name"
-                :class="{'dc_title_active': item.isRootActive}"
+                :class="{'dc_title_active': item.isRootActive, 'dc_title_rotate': visibles[index]}"
                 @click="toggleNav($event, index)"
                 v-text="item.name"
                 v-if="item.name">
@@ -98,8 +98,33 @@ export default {
         font-size: 16px;
         font-weight: 400;
         color: $color2f;
+        padding: 5px 10px 5px 0;
+        border-bottom: 1px solid #e3e3e3;
+        margin-right: 30px;
+        position: relative;
         &.dc_title_active {
-            color: red;
+            color: $colorFC9;
+            &:after {
+                border-top-color: $colorFC9;
+            }
+        }
+        &.dc_title_rotate {
+            &:after {
+                transform: rotate(180deg);
+                top: 32%;
+            }
+        }
+        &:after {
+            content: '';
+            width: 0;
+            height: 0;
+            border: 5px solid transparent;
+            border-top-color: $color3;
+            position: absolute;
+            right: 0;
+            top: 65%;
+            transform: translateY(-50%);
+            transition: all .5s;
         }
     }
     .dc_item-subItem {
@@ -129,7 +154,20 @@ export default {
         display: block;
         padding: 5px 10px 5px 0;
         &.dc-subItem-active {
-            background: $colorECE;
+            // background: $colorECE;
+            background: rgba(252,145,83,.2);
+            position: relative;
+            color: $colorFC9;
+            &:after {
+                content: '';
+                width: 3px;
+                height: 100%;
+                background-color: $colorFC9;
+                position: absolute;
+                z-index: 1;
+                right: 0;
+                top: 0;
+            }
         }
     }
 }
