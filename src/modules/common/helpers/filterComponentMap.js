@@ -40,6 +40,8 @@ export default function filterComponentMap (acPageModule, acComMap, newComMap, p
 
                     newComMap[_path + '/' + _compName] = {
                         $parent: _pageItem,
+                        path: _path + '/' + _compName,
+                        name: _compName,
                         component: (_comMap && _comMap.component) || _comMap
                     };
                 }

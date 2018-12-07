@@ -2,7 +2,8 @@
     <div class="dcs_slideNavBox">
         <div class="dc_slideNavBox-content">
             <dc-search-box
-                :placeholder="placeholder">
+                :placeholder="placeholder"
+                v-model="keyVal">
             </dc-search-box>
             <dc-slide-nav
                 class="dc_content-nav"
@@ -59,7 +60,8 @@ export default {
     data () {
         return {
             posX: 0, // 记录拖动导航的位置
-            dragable: false // 导航是否可以拖动
+            dragable: false, // 导航是否可以拖动
+            keyVal: '' // 关键字
         };
     },
     mounted () {
@@ -174,6 +176,23 @@ export default {
         _end (evt) {
             const _that = this;
             _that.dragable = false;
+        }
+    },
+    watch: {
+        keyVal (nowVal) {
+            const _that = this;
+            const _comMap = _that.componentMap;
+            let _path = null;
+            if (_comMap) {
+                for (let key in _comMap) {
+                    const _item = _comMap[key];
+                    if (_item && _item.name.indexOf(nowVal) > -1) {
+                        _path = key;
+                        break;
+                    }
+                }
+            }
+            _path && _that.$router.push(_path);
         }
     }
 };

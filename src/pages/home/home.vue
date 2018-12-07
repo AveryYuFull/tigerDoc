@@ -29,7 +29,6 @@ export default {
 @import "style/_public/_var.scss";
 @import "style/_public/_mixin.scss";
 @import "style/_public/_iconFont.scss";
-
 .dcs_app {
     .dc_app-layout {
         max-width: unset;
