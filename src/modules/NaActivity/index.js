@@ -3,7 +3,8 @@ import DefaultTheme from '../common/templates/DefaultTheme.vue';
 import WidgetCom, { comPages as WidgetPages } from './Widget';
 import CommonCom, { comPages as CommonPages } from './Common';
 import BusinessCom, { comPages as BusinessPages } from './Business';
-
+console.log('aaaaaa-->', process.env);
+// const pageModules = process.env.pageModules;
 const pageModules = [{
     name: 'na-activity',
     pages: '',
