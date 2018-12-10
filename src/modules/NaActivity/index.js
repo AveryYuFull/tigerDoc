@@ -12,7 +12,7 @@ const pageModules = [{
             name: 'Widget',
             pages: WidgetPages,
             children: [{
-                name: 'Common1',
+                name: 'Common111',
                 pages: CommonPages
             }]
         },

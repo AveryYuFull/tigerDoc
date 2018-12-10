@@ -2,8 +2,7 @@
     <div class="dcs_document">
         <dc-slide-nav-box
             class="dc_document-slideNav"
-            :page-modules="pageModules"
-            :component-map="componentMap">
+            :config="config">
         </dc-slide-nav-box>
         <div class="dc_layout-doc">
             <router-view></router-view>
@@ -16,7 +15,8 @@
 
 <script>
 import DcSlideNavBox from '@/components/slideNavBox/SlideNavBox';
-import pageModules from '@/modules';
+// import pageModules from '@/modules';
+import config from '../../modules/';
 import DcPreview from '../../components/preview/Preview';
 
 export default {
@@ -27,8 +27,7 @@ export default {
     },
     data () {
         return {
-            pageModules: pageModules.pageModules,
-            componentMap: pageModules.componentMap
+            config: config
         };
     }
 };

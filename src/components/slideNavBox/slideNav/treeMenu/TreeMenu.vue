@@ -4,7 +4,7 @@
         <li class="dc-treeMenu-item"
             :key="index"
             v-for="(item, index) in itemData"
-            v-if="item">
+            v-if="item && item.visible">
             <div class="dc_item-name"
                 :class="{'dc_title_active': item.isRootActive, 'dc_title_rotate': visibles[index]}"
                 @click="toggleNav($event, index)"
@@ -22,8 +22,8 @@
                 <div>
                     <ul>
                         <li :key="subIndex"
-                            v-for="(subItem, subIndex) in (item.pathPages || [])"
-                            v-if="subItem">
+                            v-for="(subItem, subIndex) in (item.pages || [])"
+                            v-if="subItem && subItem.visible">
                             <router-link class="dc_subItem-name"
                                 active-class="dc-subItem-active"
                                 :to="subItem.path"

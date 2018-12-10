@@ -3,7 +3,8 @@
         v-if="pageModules && pageModules.length > 0">
         <li class="dc_slideNav-navItem"
             :key="index"
-            v-for="(item, index) in pageModules">
+            v-for="(item, index) in pageModules"
+            v-if="item && item.visible">
             <div class="dc_navItem-title">
                 <div class="dc_title-text"
                     :class="{'dc_title_active': item.isRootActive}"

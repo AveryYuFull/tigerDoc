@@ -7,7 +7,7 @@
             </dc-search-box>
             <dc-slide-nav
                 class="dc_content-nav"
-                :page-modules="pageModules">
+                :page-modules="myConfig.disPageModules">
             </dc-slide-nav>
         </div>
         <div class="dc_slideNavBox-drag" ref="hook_drag">
@@ -21,6 +21,7 @@ import DcSlideNav from './slideNav/SlideNav';
 
 import initEventListener from '../../commons/utils/initEventListener';
 import getEventType from '../../commons/utils/getEventType';
+import filterConfig from '../../modules/common/helpers/filterConfig';
 
 /**
  * 导航栏最大宽度／最小宽度
@@ -43,10 +44,7 @@ export default {
         placeholder: {
             type: String
         },
-        pageModules: {
-            type: Array
-        },
-        componentMap: {
+        config: {
             type: Object
         },
         /**
@@ -58,10 +56,12 @@ export default {
         }
     },
     data () {
+        const _that = this;
         return {
             posX: 0, // 记录拖动导航的位置
             dragable: false, // 导航是否可以拖动
-            keyVal: '' // 关键字
+            keyVal: '', // 关键字
+            myConfig: _that.config || {}
         };
     },
     mounted () {
@@ -86,26 +86,33 @@ export default {
          */
         _watchRoute () {
             const _that = this;
-            const _navList = _that.pageModules;
-            const _comMap = _that.componentMap;
             _that.$watch('$route.path', (newPath) => {
                 let _newPath = newPath;
-                if (rootNav && rootNav.length > 0) {
-                    rootNav.forEach(root => {
-                        root && (root.isRootActive = false);
-                    });
-                }
-                rootNav = [];
-                let _parent = ((_comMap && _comMap[_newPath]) || {}).$parent;
-                do {
-                    if (!_parent) {
-                        break;
-                    }
-                    _that.$set(_parent, 'isRootActive', true);
-                    rootNav.push(_parent);
-                    _parent = _parent.$parent;
-                } while (_parent);
+                _that._setRootStatus(_newPath);
             }, {immediate: true});
+        },
+        /**
+         * 设置当前项的root项的状态
+         * @param {String} newPath 当前路由
+         */
+        _setRootStatus (newPath) {
+            const _that = this;
+            const _comMap = _that.myConfig.disComponentMap;
+            if (rootNav && rootNav.length > 0) {
+                rootNav.forEach(root => {
+                    root && (root.isRootActive = false);
+                });
+            }
+            rootNav = [];
+            let _parent = ((_comMap && _comMap[newPath]) || {}).$parent;
+            do {
+                if (!_parent) {
+                    break;
+                }
+                _that.$set(_parent, 'isRootActive', true);
+                rootNav.push(_parent);
+                _parent = _parent.$parent;
+            } while (_parent);
         },
         /**
          * 注册／取消事件监听
@@ -181,18 +188,11 @@ export default {
     watch: {
         keyVal (nowVal) {
             const _that = this;
-            const _comMap = _that.componentMap;
-            let _path = null;
-            if (_comMap) {
-                for (let key in _comMap) {
-                    const _item = _comMap[key];
-                    if (_item && _item.name.indexOf(nowVal) > -1) {
-                        _path = key;
-                        break;
-                    }
-                }
+            const _myConfig = _that.myConfig;
+            if (_myConfig) {
+                _that.myConfig = filterConfig(_myConfig.pageModules, _myConfig.componentMap, nowVal);
+                _that._setRootStatus(_that.$route.path);
             }
-            _path && _that.$router.push(_path);
         }
     }
 };
