@@ -4,9 +4,17 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 
+import { envFactory } from './commons/envService/EnvService';
+import { httpFactory } from './commons/httpClient/httpClient';
+
 import 'style/index.scss';
 
 Vue.config.productionTip = false;
+
+let $env = envFactory(); // 环境变量
+let $http = httpFactory({}, $env);
+
+Vue.prototype.$http = $http;
 
 /* eslint-disable no-new */
 new Vue({

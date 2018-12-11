@@ -36,6 +36,17 @@ function traverseFile(filePath, pageModules){
     }
 }
 
+// const glob = require('glob');
+
+// function getFileMap (dirText) {
+//     let filePath = glob.sync(dirText);
+//     filePath.forEach(file => {
+//         console.log(file.replace(/src\/modules\//, ''));
+//     })
+// }
+
+// getFileMap(filePath + '/**/*');
+
 //调用文件遍历方法
 traverseFile(filePath, pageModules);
 

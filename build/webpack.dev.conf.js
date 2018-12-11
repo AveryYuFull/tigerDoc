@@ -10,6 +10,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
+// 模拟后台启动一个express服务
+const express = require('express');
+const app = express();
+const apiRoutes = express.Router();
+const pageModules = require('./pre-init');
+app.use('/', apiRoutes);
+
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -22,6 +29,14 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
   // these devServer options should be customized in /config/index.js
   devServer: {
+    before (app) {
+        app.get('/files', (req, res) => {
+            res.json({
+                errno: 0,
+                data: pageModules
+            });
+        })
+    },
     clientLogLevel: 'warning',
     historyApiFallback: {
       rewrites: [
