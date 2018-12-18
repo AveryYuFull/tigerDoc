@@ -1,4 +1,4 @@
-import { TABLE_TITLES, TABLE_CONTENT_ATTR_MAP } from '../constant';
+import { TABLE_TITLES, TABLE_CONTENT_ATTR_MAP, getAlias } from '../constant';
 import generateTableMap from '../../common/helpers/generateTableMap';
 
 export default {
@@ -25,24 +25,24 @@ export default {
             name: 'Example',
             contents: [{
                 type: 'desc',
-                name: 'template:'
+                contents: 'template:'
             }, {
                 type: 'pre',
                 contents: `<template>
-    <ac-ae-animation
+    <${getAlias(1)}-ae-animation
         :img-url="imgUrl">
-    </ac-ae-animation>
+    </${getAlias(1)}-ae-animation>
 </template>`
             }, {
                 type: 'desc',
-                name: 'script:'
+                contents: 'script:'
             }, {
                 type: 'pre',
                 contents: `<script>
-    import AcAeAnimation from 'aeAnimation/AeAnimation';
+    import ${getAlias()}AeAnimation from 'aeAnimation/AeAnimation';
     export default {
         components: {
-            AcAeAnimation
+            ${getAlias()}AeAnimation
         },
         data(){
             return {
@@ -61,7 +61,7 @@ export default {
                 [
                     ['imgUrl', 'Y', '显示值', 'string', '', '']
                 ],
-                TABLE_CONTENT_ATTR_MAP.PROPS
+                TABLE_CONTENT_ATTR_MAP.PROPS,
             )
         },
         {
@@ -76,7 +76,7 @@ export default {
                         '$event'
                     ]
                 ],
-                TABLE_CONTENT_ATTR_MAP.EVENTS
+                TABLE_CONTENT_ATTR_MAP.EVENTS,
             )
         },
         {
@@ -95,7 +95,7 @@ export default {
                         }
                     ]
                 ],
-                TABLE_CONTENT_ATTR_MAP.PROJECTS
+                TABLE_CONTENT_ATTR_MAP.PROJECTS,
             )
         },
         {

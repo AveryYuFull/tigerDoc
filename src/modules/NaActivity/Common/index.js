@@ -4,6 +4,7 @@ import loadingContainer from './loadingContainer';
 import ernie from './ernie';
 import newBigHit from './newBigHit';
 import tVideo from './tVideo';
+import newLayout from './newLayout';
 
 export default {
     goodsItem,
@@ -11,7 +12,8 @@ export default {
     loadingContainer,
     ernie,
     newBigHit,
-    tVideo
+    tVideo,
+    newLayout
 };
 
 export const comPages = [
@@ -20,5 +22,6 @@ export const comPages = [
     'loadingContainer',
     'ernie',
     'newBigHit',
-    'tVideo'
+    'tVideo',
+    'newLayout'
 ];

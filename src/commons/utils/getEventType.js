@@ -7,7 +7,6 @@
 export default function getEventType (type) {
     let _res = null;
     if ('ontouchstart' in window || type === 'touchstart') {
-        _res.isTouchable = true;
         _res = {
             isTouchable: true,
             EVENT_START: 'touchstart',

@@ -1,22 +1,34 @@
 import { TABLE_TITLES, TABLE_CONTENT_ATTR_MAP, getAlias } from '../constant';
 import generateTableMap from '../../common/helpers/generateTableMap';
+import { MODULEDATA, MODULEDATAPROP } from './common/commonData';
 
-const tpls = `<${getAlias(1)}-close-img
-    :data="'img.png'">
-</${getAlias(1)}-close-img>`;
+const tpls = `<${getAlias(1)}-answer-base
+    :moduleData="moduleData"
+    @click="click($event)">
+</${getAlias(1)}-answer-base>`;
+
+const script = `<script>
+    import ${getAlias()}AnswerBase from 'answerBase/AnswerBase';
+    export default {
+        components: {
+            ${getAlias()}AnswerBase
+        },
+        data() {
+            return {
+                ${MODULEDATA.ANSWER}
+            }
+        }
+    };
+</script>`;
 
 export default {
-    name: 'CloseImg组件',
-    desc: '<p>关闭按钮（中奖弹窗上在用）</p>',
+    name: 'AnswerBase组件',
+    desc: '<p>答题抽奖模块</p>',
     contents: [
-        {
-            name: 'Dependencies',
-            contents: [{
-                type: 'router',
-                link: `${getAlias(1)}-img-box`,
-                contents: `${getAlias()}ImgBox`
-            }]
-        },
+        // {
+        //     name: 'Dependencies',
+        //     contents: []
+        // },
         {
             name: 'Example',
             contents: [{
@@ -25,6 +37,12 @@ export default {
             }, {
                 type: 'pre',
                 contents: tpls
+            }, {
+                type: 'desc',
+                contents: 'script:'
+            }, {
+                type: 'pre',
+                contents: script
             }]
         },
         {
@@ -33,7 +51,7 @@ export default {
             titles: TABLE_TITLES.PROPS,
             contents: generateTableMap(
                 [
-                    ['data', 'N', '图片地址', 'String', '-', './imgs/close_copy.png']
+                    MODULEDATAPROP
                 ],
                 TABLE_CONTENT_ATTR_MAP.PROPS,
             )
@@ -45,14 +63,20 @@ export default {
             contents: generateTableMap(
                 [
                     [
-                        'handleClose',
-                        '关闭事件',
-                        '-'
+                        'click',
+                        '点击事件',
+                        '$event'
                     ]
                 ],
                 TABLE_CONTENT_ATTR_MAP.EVENTS,
             )
         },
+        // {
+        //     type: 'table',
+        //     name: 'Methods',
+        //     titles: TABLE_TITLES.METHOD,
+        //     contents: []
+        // },
         {
             type: 'table',
             name: 'Projects',
@@ -76,7 +100,7 @@ export default {
             name: 'Backers',
             contents: [{
                 type: 'desc',
-                contents: 'yuzhaoman'
+                contents: 'zhangping & sheyangjuan'
             }]
         }
     ]

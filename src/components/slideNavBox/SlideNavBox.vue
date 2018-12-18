@@ -202,9 +202,11 @@ export default {
 @import "style/_public/_var.scss";
 @import "style/_public/_mixin.scss";
 @import "style/_public/_iconFont.scss";
+
 .dcs_slideNavBox {
     display: flex;
     width: 264px;
+    height: 100%;
     .dc_slideNavBox-content {
         overflow: auto;
         height: 100%;
